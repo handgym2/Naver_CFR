@@ -4,19 +4,20 @@ import requests
 import urllib.request
 import json
 from bs4 import BeautifulSoup
+from api_key import *
 
-client_id = "aJ7PwUcnZr6eFYmFP9CG"
-client_secret = "bhhgkPaPks"
+'''
+client_id = ""
+client_secret = "" '''
 
 # 유명인 얼굴인식
 url = "https://openapi.naver.com/v1/vision/celebrity" 
 
-files = {'image': open('test_img/기타.jpg', 'rb')}
+files = {'image': open('test_img/1234.png', 'rb')}
 headers = {'X-Naver-Client-Id': client_id, 'X-Naver-Client-Secret': client_secret }
 response = requests.post(url,files=files, headers=headers)
 rescode = response.status_code
 response_data = response.json()
-print(response_data)
 try:
     if(rescode==200):
         name = response_data['faces'][0]['celebrity']['value']
